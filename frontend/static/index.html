@@ -15,7 +15,7 @@
     const API_URL = 'http://localhost:8000';
 
     async function fetchTodos() {
-        const response = await fetch(`${API_URL}/todos`);
+        const response = await fetch('${API_URL}/todos');
         const todos = await response.json();
         const list = document.getElementById('todoList');
         list.innerHTML = '';
@@ -33,7 +33,7 @@
     async function addItem() {
         const input = document.getElementById('newItem');
         if (input.value.trim() !== '') {
-            const response = await fetch(`${API_URL}/todos`, {
+            const response = await fetch('${API_URL}/todos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +48,7 @@
     }
 
     async function deleteItem(id) {
-        const response = await fetch(`${API_URL}/todos/${id}`, {
+        const response = await fetch('${API_URL}/todos/${id}', {
             method: 'DELETE',
         });
         if (response.ok) {
