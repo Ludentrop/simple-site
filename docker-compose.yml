@@ -10,6 +10,8 @@ services:
       target: runner
     ports:
       - 8000:8000
+    env_file:
+      - ./backend/.env
 
   frontend:
     image: frontend
@@ -20,3 +22,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
+
+  mongodb:
+    image: mongo:7.0.12
+    container_name: mongodb
+    volumes:
+      - mongodb:/data/db
+    env_file:
+      - ./mongodb/.env
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: admin12345
+
+volumes:
+  mongodb:
